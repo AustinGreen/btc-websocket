@@ -15,10 +15,10 @@ class App extends Component {
       .get("https://data.messari.io/api/v1/assets/btc/metrics")
       .then(response => {
         this.setState({ price: response.data.data.market_data.price_usd });
-        const geminiBtcUsdTrades = new WebSocket(
+        const btcUsdTrades = new WebSocket(
           "wss://data.messari.io/api/v1/trades/kraken/btc-usd"
         );
-        geminiBtcUsdTrades.addEventListener("message", this.setPrice);
+        btcUsdTrades.addEventListener("message", this.setPrice);
       });
   }
 
